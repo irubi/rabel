@@ -82,3 +82,4 @@ gem 'figaro'
 
 gem 'rails_kindeditor', '~> 0.3.18'
 
+gem 'nokogiri'

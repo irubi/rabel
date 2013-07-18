@@ -1,0 +1,20 @@
+
+	<div class="club_header container">
+		<div class="header_logo">
+			<a href="/"><%= image_tag "logo.jpg" %></a>
+		</div>
+		<div class="header_nav">
+			<ul>
+				<li><a <%= 'class=nav_f' if(controller_path == 'home' and action_name == 'index') %> href="/">摄影作品</a></li>					
+
+				<li><a href="/">摄影活动</a></li>
+
+				<li><a <%= 'class=nav_f' if(controller_path != 'home') %> href="<%= forum_path %>">摄影论坛</a></li>
+				<li>
+					<a <%= 'class=nav_f' if(controller_path == 'home' and action_name == 'about') %> href="<%= about_path %>">关于EOS</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<hr align="center" size="4" noshade="noshade" color="#d8dcdd">

@@ -273,6 +273,7 @@ DEPENDENCIES
   kgio
   mime-types
   mysql2
+  nokogiri
   quiet_assets (~> 1.0.1)
   rabel-meta (= 1.5)
   rails (= 3.2.13)

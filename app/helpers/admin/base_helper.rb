@@ -40,6 +40,7 @@ module Admin::BaseHelper
           ['广告位', 'ads', admin_advertisements_path],
           ['文件上传', 'cloud', admin_cloud_files_path],
           ['奖励记录', 'reward_history', admin_rewards_path],
+          ['首页图片选择', 'image_select', show_images_admin_topics_path]
         ]
       }
     ]

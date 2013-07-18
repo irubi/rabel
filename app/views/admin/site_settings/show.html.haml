@@ -95,26 +95,26 @@
         .controls
           = text_area_tag 'settings[seo_description]', @settings.seo_description, :class => :span6
           %small.help-inline 用于HTML meta标签
-      .control-group
-        = label_tag 'settings[splash]', 'Hero Unit', :class => 'control-label'
-        .controls
-          = text_area_tag 'settings[splash]', @settings.splash, :class => :span6, :rows => 5
-          %small.help-inline 支持HTML
+      / .control-group
+      /   = label_tag 'settings[splash]', 'Hero Unit', :class => 'control-label'
+      /   .controls
+      /     = text_area_tag 'settings[splash]', @settings.splash, :class => :span6, :rows => 5
+      /     %small.help-inline 支持HTML
       .control-group
         = label_tag 'settings[global_sidebar_block]', '全局侧边栏', :class => 'control-label'
         .controls
           = text_area_tag 'settings[global_sidebar_block]', @settings.global_sidebar_block, :class => :span6, :rows => 5
           %small.help-inline 支持HTML
-      .control-group
-        = label_tag 'settings[footer]', '页面底部 [普通版]', :class => 'control-label'
-        .controls
-          = text_area_tag 'settings[footer]', @settings.footer, :class => :span6, :rows => 5
-          %small.help-inline 支持HTML
-      .control-group
-        = label_tag 'settings[mobile_footer]', '页面底部 [移动版]', :class => 'control-label'
-        .controls
-          = text_area_tag 'settings[mobile_footer]', @settings.mobile_footer, :class => :span6, :rows => 5
-          %small.help-inline 支持HTML
+      / .control-group
+      /   = label_tag 'settings[footer]', '页面底部 [普通版]', :class => 'control-label'
+      /   .controls
+      /     = text_area_tag 'settings[footer]', @settings.footer, :class => :span6, :rows => 5
+      /     %small.help-inline 支持HTML
+      / .control-group
+      /   = label_tag 'settings[mobile_footer]', '页面底部 [移动版]', :class => 'control-label'
+      /   .controls
+      /     = text_area_tag 'settings[mobile_footer]', @settings.mobile_footer, :class => :span6, :rows => 5
+      /     %small.help-inline 支持HTML
       .control-group
         = label_tag 'settings[sticky_topics_heading]', '置顶话题提示', :class => 'control-label'
         .controls

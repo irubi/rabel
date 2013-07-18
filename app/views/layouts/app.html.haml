@@ -1,5 +1,9 @@
 - content_for :content do
-  .span9
+  - if controller_name != 'home'
+    .span9
+      = render 'shared/alert'
+      = yield
+  - else
     = render 'shared/alert'
     = yield
 

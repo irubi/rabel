@@ -2,6 +2,8 @@ class Topic < ActiveRecord::Base
   include Notifiable
   include Rabel::ActiveCache
 
+  has_many :nicepictures
+
   DEFAULT_HIT = 0
   default_value_for :hit, DEFAULT_HIT
   default_value_for :content, ''
@@ -24,6 +26,10 @@ class Topic < ActiveRecord::Base
 
   def last_comment
     self.comments.order('created_at ASC').last
+  end
+
+  def images
+    Nokogiri::HTML(self.content).css('img').collect{|dom| dom.attr("src")}
   end
 
   def locked?

@@ -68,7 +68,11 @@ Rabel::Application.routes.draw do
     end
 
     resource :site_settings
-    resources :topics, :advertisements, :cloud_files, :rewards
+    resources :topics do
+      get :show_images, :on => :collection
+    end
+
+    resources :advertisements, :cloud_files, :rewards
     
     resources :notifications do
       delete :clear, :on => :collection
@@ -78,5 +82,7 @@ Rabel::Application.routes.draw do
 
     root :to => 'welcome_admin#index'
   end
-  root :to => 'welcome#index'
+  root :to => 'home#index'
+  match 'forum' => 'welcome#index', :as => :forum
+  match 'about' => 'home#about', :as => :about
 end

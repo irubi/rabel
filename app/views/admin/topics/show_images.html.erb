@@ -1,0 +1,18 @@
+
+<ul>
+	<% @topics.each do |topic| %>
+		<% unless topic.images.blank? %>
+			标题：<%= topic.title %>， 作者：<%= topic.user.nickname %>
+			<p>
+			<% topic.images.each do |img| %>
+				<li style="display:inline-block">
+					<div style="width:150px;height:150px">
+						<%= image_tag img %>
+						<div><%= link_to "加入首页图片", %></div>
+					</div>
+				</li>
+			<% end %>
+			</p>
+		<% end %>
+	<% end %>
+</ul>

@@ -1,14 +1,9 @@
 #footer
   .container#footer-main
-    %ul.page-links
-      = render :partial => 'pages/nav', :collection => Page.only_published.default_order, :spacer_template => 'pages/nav_ruler'
+    
     .copywrite
-      = Siteconf.footer.html_safe
-    %small.muted
-      Powered by
-      = link_to 'Rabel', 'http://rabelapp.com', :target => '_blank', :class => :muted
-      = Rabel.version
-
+      © 2013 山西EOS摄影俱乐部  太原天易文化传媒有限公司
+    
 = render 'shared/google_analytics'
 
 :javascript
