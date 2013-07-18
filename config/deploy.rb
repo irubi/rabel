@@ -88,4 +88,4 @@ end
 
 after 'deploy:update_code', 'deploy:symlink_shared'
 after 'deploy:symlink_shared', 'db:migrate'
-# after "deploy:symlink_shared", "deploy:assets"
+after "deploy:symlink_shared", "deploy:assets"
