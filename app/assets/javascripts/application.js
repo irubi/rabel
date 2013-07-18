@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require kindeditor
 //= require jquery.ui.sortable
 //= require jquery.ui.datepicker
 //= require jquery.ui.datepicker-zh-CN
@@ -10,3 +11,4 @@
 //= require jquery_at_caret
 //= require jquery_smooth_scroll
 //= require rabel
+//= require jquery.fullsizable.1.6.min

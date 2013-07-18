@@ -73,6 +73,9 @@ jQuery ($) ->
     $(this).addClass('current_label')
     $("a.preview").removeClass('current_label')
 
+  
+
+
   $(".track_event").click ->
     window.rabel.trackEvent($(this).data('category'), $(this).data('action'), $(this).data('label'))
 

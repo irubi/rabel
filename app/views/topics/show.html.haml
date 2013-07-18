@@ -1,6 +1,7 @@
 = render 'nodes/custom_fields', :node => @node
 = render 'topics/show/bookmarked_users'
 = render 'topics/show/manage'
+= render 'topics/fullscreen'
 
 - content_for :template_js do
   :plain
@@ -35,7 +36,7 @@
         次浏览
       .clearfix
     .inner
-      .content.topic_content= format_topic(@topic.content)
+      .content.topic_content= (raw @topic.content)
       - if user_signed_in?
         .pull-right
           - if current_user.bookmarked?(@topic)

@@ -80,3 +80,5 @@ gem 'foreman', '~> 0.61.0'
 gem 'thin', '~> 1.5.0'
 gem 'figaro'
 
+gem 'rails_kindeditor', '~> 0.3.18'
+

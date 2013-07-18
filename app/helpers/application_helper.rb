@@ -4,6 +4,14 @@ module ApplicationHelper
     append_notification_count(Siteconf.site_name + ' - ' + Siteconf.short_intro)
   end
 
+  def kindeditor_options
+    {:items => ['undo', 'redo', '|', 'image', 'link', 'unlink', '|', 'preview'],
+     :pasteType => 1,
+     :filterMode => true,
+     :allowImageRemote => false
+    }
+  end
+
   def append_notification_count(title)
     return title if @unread_count == 0
     title + " (#{@unread_count})"
