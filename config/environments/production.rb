@@ -50,7 +50,7 @@ Rabel::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( *.css *.js )
+  config.assets.precompile += [ 'jquery.collagePlus.min.js', 'application.js', 'i_fileupload.js', 'jquery.collageCaption.min.js', 'jquery.fullsizable.1.6.min.js', 'jquery.removeWhitespace.min.js', 'jquery.ui.js', 'rabel.js.coffee', 'application.css', 'core.css.scss', 'custom.css' ]
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
