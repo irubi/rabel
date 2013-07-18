@@ -8,7 +8,6 @@ set :default_environment, {
 set :rvm_type, :system
 require "rvm/capistrano"
 require 'bundler/capistrano'
-require "whenever/capistrano"
 
 default_run_options[:pty] = true  # Must be set for the password prompt from git to work
 set :application, "rabel"
@@ -61,6 +60,7 @@ namespace :deploy do
   desc "Symlink shared resources on each release"
   task :symlink_shared, :roles => :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
   end
 end
 
