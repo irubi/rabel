@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130718075747) do
+ActiveRecord::Schema.define(:version => 20130720071933) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(:version => 20130718075747) do
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.string   "weibo_link",       :default => ""
+    t.string   "gender"
+    t.datetime "birthday"
+    t.string   "qq"
+    t.string   "phone"
   end
 
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"

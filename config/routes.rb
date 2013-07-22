@@ -69,6 +69,7 @@ Rabel::Application.routes.draw do
 
     resource :site_settings
     resources :topics do
+      get :select_image, :on => :member
       get :show_images, :on => :collection
     end
 
@@ -85,4 +86,5 @@ Rabel::Application.routes.draw do
   root :to => 'home#index'
   match 'forum' => 'welcome#index', :as => :forum
   match 'about' => 'home#about', :as => :about
+  post 'image_info' => 'home#image', :as => :image_info
 end

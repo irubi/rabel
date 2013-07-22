@@ -14,9 +14,14 @@ class SessionsController < Devise::SessionsController
     reset_session
     session.reverse_merge!(old_session)
     if mobile_device?
-      redirect_to root_path
+      redirect_to forum_path
     else
       respond_with resource, :location => after_sign_in_path_for(resource)
     end
+  end
+
+  private
+  def after_sign_in_path_for(resource)
+    forum_path
   end
 end

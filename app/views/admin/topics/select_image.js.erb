@@ -1,0 +1,2 @@
+var img = $('.container .span8').find('img[src$="<%= params[:url] %>"]')
+img.next('a').text("<%= @text %>首页")

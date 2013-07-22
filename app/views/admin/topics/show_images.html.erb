@@ -1,14 +1,15 @@
-
 <ul>
 	<% @topics.each do |topic| %>
 		<% unless topic.images.blank? %>
-			标题：<%= topic.title %>， 作者：<%= topic.user.nickname %>
+		<hr/>
+			标题：<%= topic.title %>， 作者：<%= topic.user.nickname %>， 分类：<%= topic.node.name %>
 			<p>
-			<% topic.images.each do |img| %>
+			<% topic.images.each_with_index do |img, index| %>
 				<li style="display:inline-block">
 					<div style="width:150px;height:150px">
 						<%= image_tag img %>
-						<div><%= link_to "加入首页图片", %></div>
+						
+							<%= link_to "#{ Nicepicture.find_by_url(img).nil? ? '加入首页' : '移出首页'}", select_image_admin_topic_path(:url => img, :id => topic.id), :remote => true %>
 					</div>
 				</li>
 			<% end %>
@@ -16,3 +17,5 @@
 		<% end %>
 	<% end %>
 </ul>
+
+<%= paginate @topics %>

@@ -1,7 +1,7 @@
 class Account < ActiveRecord::Base
   belongs_to :user
 
-  BASE_FIELDS = [:personal_website, :location, :signature, :introduction, :weibo_link]
+  BASE_FIELDS = [:personal_website, :location, :signature, :introduction, :weibo_link, :gender, :birthday, :phone, :qq]
   attr_accessible *BASE_FIELDS
   attr_accessible *BASE_FIELDS, :as => :admin
 

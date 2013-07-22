@@ -72,6 +72,54 @@ height: 126px;
   </style>
   <script type="text/javascript" charset="utf-8">
     $(function() {
+      
+      $(".topic_content img").each(function(){
+        var image_dom = $(this);
+        $.ajax({ 
+          type: "post",
+          url: '<%= image_info_path %>',
+          data: {url: image_dom.attr("src")},
+          dataType: "json",
+          success: function (data) {
+
+
+            // {:camera => exif.model, #相机型号
+            //   :date_time => exif.date_time_original, #拍摄时间
+            //   :exposure_time => exif.exposure_time.to_s, #曝光时间
+            //   :f_number => exif.f_number.to_f, #光圈系数
+            //   :focal_length => exif.focal_length.to_f, #焦距
+            //   :iso_speed_ratings => exif.iso_speed_ratings.to_s, #ISO感光值
+            //   :exposure_program => exposure_program_hash[exif.exposure_program] #曝光模式1,2,3
+            //  }
+            console.log("----");
+            
+            record = '<div style="text-align:left"><p>相机型号：' + data.camera + '</p>' + 
+                     '<p>拍摄时间：' + data.date_time + '</p>' +
+                     '<p>曝光时间：' + data.exposure_time + '</p>' +
+                     '<p>曝光模式：' + data.exposure_program + '</p>' +
+                     '<p>光圈系数：' + data.f_number + '</p>' +
+                     '<p>焦距：' + data.focal_length + '</p>' +
+                     '<p>IOS感光值：' + data.iso_speed_ratings + '</p>' +
+                     '<p>拍摄地址：' + data.address + '</p></div>'
+                     console.log(record);
+            image_dom.tooltip({ placement: "right", 
+                      html:true,
+                       opacity: 0.7, 
+                       title: record
+                     });
+            //image_dom.after('<div style="display:none" class="image_info">' + record + '</div>')
+          },
+          error: function (data) { 
+            image_dom.after('<div style="display:none" class="image_info">' + 'exif 无信息' + '</div>')
+          } 
+        });
+        
+      });
+      
+      // $('.topic_content img').tooltip({ placement: "right", 
+      //                                   opacity: 0.7, 
+      //                                   title:$(this).next(".image_info").text()
+      //                                 });
       $('.topic_content img').wrap(function() {
         return '<a class="fullscreen_images" href=' + $(this).attr("src") + ' />';
       });

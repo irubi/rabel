@@ -10,6 +10,7 @@
             .profile-link= user_profile_link(current_user)
             .signature= current_user.account.signature
       .sep10
+      = current_user.system_rank
       %table{:width => '100%'}
         = render 'shared/my_fav'
     - unless current_user.has_avatar?

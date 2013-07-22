@@ -1,5 +1,11 @@
 = f.fields_for :account do |fields|
-  = fields.input :personal_website, :label => '个人网站'
+  = fields.input :qq, :label => 'QQ号'
+  = fields.input :phone, :label => '手机号'
+	
+  = fields.input :birthday, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, discard_day: false, order: [:year, :month, :day], :input_html => {:class => :span1}, :label => '生日'
+  = fields.input :gender, collection: ["男", "女"], :label => '性别'
+
+  / = fields.input :personal_website, :label => '个人网站'
   = fields.input :location, :label => '所在地'
   = fields.input :weibo_link, :label => '微博地址', :input_html => {:class => :span4}
   = fields.input :signature, :label => '签名', :input_html => {:class => :span4}

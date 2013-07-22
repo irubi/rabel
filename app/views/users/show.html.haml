@@ -40,6 +40,7 @@
             号会员, 加入于
             = @user.created_at.strftime("%Y-%m-%d %H:%M:%S %p")
           .sep10
+          = @user.system_rank
           %table{:cellpadding => 2, :cellspacing => 0, :border => 0, :width => '100%'}
             %tr
               %td{:width => '50%'}

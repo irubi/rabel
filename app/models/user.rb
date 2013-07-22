@@ -169,6 +169,21 @@ class User < ActiveRecord::Base
     self.read_attribute(:avatar).present?
   end
 
+  def system_rank
+    case self.topics.length
+    when 0..200
+      '摄影新人'
+    when 200..1000
+      '初级摄影师'
+    when 1000..5000
+      '三级摄影师'
+    when 5000..10000
+      '二级摄影师'
+    else
+      '一级摄影师'
+    end
+  end
+
   private
     def create_acount
       self.build_account if self.account.nil?

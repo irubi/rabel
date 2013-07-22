@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
     @signature = @user.account.signature
     @weibo_link = cannonical_url(@user.account.weibo_link)
+    @system_rank = @user.system_rank
     @personal_website = cannonical_url(@user.account.personal_website)
     @location = @user.account.location
     @introduction = @user.account.introduction

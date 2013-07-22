@@ -4,6 +4,7 @@ class Node < ActiveRecord::Base
   include Rabel::ActiveCache
 
   has_many :topics
+  has_many :nicepictures, :through => :topics
   has_many :bookmarks, :as => :bookmarkable, :dependent => :destroy
   belongs_to :plane, :touch => true
 
