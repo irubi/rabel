@@ -2,6 +2,7 @@ class Topic < ActiveRecord::Base
   include Notifiable
   include Rabel::ActiveCache
 
+
   has_many :nicepictures
 
   DEFAULT_HIT = 0
