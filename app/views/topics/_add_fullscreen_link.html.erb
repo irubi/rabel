@@ -1,0 +1,9 @@
+<% content_for :final_head do %>
+	<script type="text/javascript">
+	$(function() {
+		$('.topic_content img').wrap(function() {
+		  return '<a class="fullscreen_images" href=' + $(this).attr("src") + ' />';
+		});
+	})
+	</script>
+<% end %>

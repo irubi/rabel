@@ -17,7 +17,7 @@ class BookmarksController < ApplicationController
       redirect_to custom_path(@bookmark.bookmarkable)
     else
       flash[:error] = '取消收藏失败'
-      redirect_to root_path
+      redirect_to forum_path
     end
   end
 

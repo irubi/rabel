@@ -21,6 +21,7 @@
       $(document).ready(function(){
         collage();
         $('.Collage').collageCaption();
+
     	});
     });
 
@@ -34,6 +35,16 @@
         }
       );
     };
+
+    function switchImages(key){
+      if(key == 'all'){
+        $('.fullscreen_images').show();
+      }else{
+        $('.fullscreen_images').hide();
+        $('.' + key).show();
+      }
+      return false;
+    }
 
     // This is just for the case that the browser window is resized
     var resizeTimer = null;
@@ -50,19 +61,20 @@
 
 <% content_for :nav do %>
 	<ul class="photoNav">
-		<li><a class="content_nav_f" href="/">全部</a></li>
-		<li><a href="/">风光</a></li>
-		<li><a href="/">纪实</a></li>
-		<li><a href="/">商业</a></li>
-		<li><a href="/">人像</a></li>
-		<li><a href="/">花卉</a></li>
-		<li><a href="/">创意</a></li>
+		<li>
+      <%= link_to "全部", '#', :onclick => "switchImages('all')", :class => 'content_nav_f' %>
+    </li>
+    <% @nodes.each do |node| %>
+      <li>
+        <%=link_to node.name, '#', :onclick => "switchImages(\'#{node.key}\')" %>
+      </li>
+    <% end %>
 	</ul>
 <% end %>
 <%= render 'topics/fullscreen' %>
 <div class="Collage topic_content">
-	<% (1..73).each do |i|%>
-		<%= image_tag "demo/#{i}.jpg"%>
+	<% @nicepictures.each do |pic|%>
+		  <a class="fullscreen_images <%= pic.topic.node.key %>" href='<%= pic.url %>' /><%= image_tag pic.thumbnail %></a>
 	<% end %>
 </div>
 		

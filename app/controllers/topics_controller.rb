@@ -144,7 +144,7 @@ class TopicsController < ApplicationController
 
   def destroy
     if @topic.destroy
-      redirect_to root_path, :notice => '帖子删除成功'
+      redirect_to admin_topics_path, :notice => '帖子删除成功'
     else
       raise RuntimeError.new('删除帖子出错')
     end

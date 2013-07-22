@@ -6,17 +6,26 @@
       %table.topics.table
         %thead
           %tr
-            %th.w50 ID
             %th.auto{:align => :left} 用户名
+            %th.auto{:align => :left} 手机号
+            %th.auto{:align => :left} QQ号
+            %th.auto{:align => :left} 新浪微博
+            %th.auto{:align => :left} 性别
             %th.auto{:align => :left} Email
             %th.w100 注册时间
         %tbody
           - User.order('created_at DESC').limit(5).each do |user|
             %tr
-              %td.w50
-                = user.id
               %td.auto
                 = user.nickname
+              %td.auto
+                = user.account.phone
+              %td.auto
+                = user.account.qq
+              %td.auto
+                =user.account.weibo_link
+              %td.auto
+                = user.account.gender
               %td.auto
                 = user.email
               %td.w100

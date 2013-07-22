@@ -1,4 +1,5 @@
 # encoding: utf-8
+require 'RMagick'
 class Admin::TopicsController < Admin::BaseController
   def index
     @topics = Topic.order('created_at DESC').page(params[:page])
@@ -11,6 +12,7 @@ class Admin::TopicsController < Admin::BaseController
     @image = Nicepicture.find_by_url(params[:url])
     if(@image.nil?)
       @image = Nicepicture.create(:url => params[:url])
+      generate_thumbnail(@image.url)
       @topic.nicepictures << @image
       @topic.save
       @text = '移出'
@@ -36,4 +38,24 @@ class Admin::TopicsController < Admin::BaseController
       redirect_to admin_root_path
     end
   end
+
+  private
+  def generate_thumbnail(image)
+    image = Rails.public_path + image
+    origin_image = image.scan(/(.*)\./)[0][0]+ 'origin' + image.gsub(/.*\./,".")
+    thumbnail = image.scan(/(.*)\./)[0][0]+ 'thumbnail' + image.gsub(/.*\./,".")
+    clown = Magick::Image.read(origin_image).first
+    cols, rows = clown.columns, clown.rows
+
+    new_rows = rows/(cols/190)
+    clown.crop_resized!(190, new_rows, Magick::NorthGravity)
+    clown.write(thumbnail)
+  end
 end
+
+
+
+
+
+
+

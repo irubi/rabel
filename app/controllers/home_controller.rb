@@ -2,6 +2,8 @@ require "net/http"
 require "uri"
 class HomeController < ApplicationController  
 	def index
+		@nicepictures = Nicepicture.all
+		@nodes = Node.all
 	end
 
 	def about

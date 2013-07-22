@@ -11,7 +11,6 @@ class Kindeditor::AssetsController < ApplicationController
         begin
           @asset = "Kindeditor::#{@dir.camelize}".constantize.new(:asset => @imgFile)
           if @asset.save
-    
 						add_watermark(@asset.asset.url)
             render :text => ({:error => 0, :url => @asset.asset.url}.to_json)
           else
@@ -126,11 +125,14 @@ class Kindeditor::AssetsController < ApplicationController
   def add_watermark(image_path)
     watermark = "#{Rails.root}/public/watermark.png"    
     image = "#{Rails.root}/public#{image_path}"
+    origin_image = image.scan(/(.*)\./)[0][0]+ 'origin' + image.gsub(/.*\./,".")
+    `cp #{image} #{origin_image}`
     `convert #{image} #{watermark} -gravity northeast -geometry +10+10 -composite #{image}`
   end
+
+  
 
   def show_error(msg)
     render :text => ({:error => 1, :message => msg}.to_json)
   end
-  
 end
