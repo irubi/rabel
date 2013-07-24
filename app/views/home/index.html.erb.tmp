@@ -1,0 +1,97 @@
+
+<% content_for :final_head do %>
+	<style type="text/css">
+	.Collage{
+    padding:2px;
+	}
+
+.Collage img{
+    vertical-align:bottom;
+    opactiy:0;
+    }
+	</style>
+  <%= stylesheet_link_tag "jquery.capty" %>
+<% end %>
+
+<% content_for :tail do %>
+	<%= javascript_include_tag "jquery.collagePlus.min" %>
+	<%= javascript_include_tag "jquery.removeWhitespace.min" %>
+	<%= javascript_include_tag "jquery.collageCaption.min" %>
+
+  <%= javascript_include_tag "jquery.capty.min" %>
+
+	<script type="text/javascript">
+		$(window).load(function () {
+      $(document).ready(function(){
+        collage();
+        $('.Collage').collageCaption();
+        // caption();
+    	});
+    });
+
+
+    // Here we apply the actual CollagePlus plugin
+    function collage() {
+      $('.Collage').removeWhitespace().collagePlus(
+        {
+          'fadeSpeed'     : 100,
+          'targetHeight'  : 200
+        }
+      );
+    };
+
+    function caption(){
+      $(".topic_content img").each(function(){
+        var dom = $(this);
+        dom.capty({
+            animation:    'fade',
+            height:       dom.height()
+        })
+      })
+    }
+
+    function switchImages(key){
+      if(key == 'all'){
+        $('.fullscreen_images').show();
+      }else{
+        $('.fullscreen_images').hide();
+        $('.' + key).show();
+      }
+      return false;
+    }
+
+    // This is just for the case that the browser window is resized
+    function resizewindow() {
+      // hide all the images until we resize them
+      $('.Collage .Image_Wrapper').css("opacity", 0);
+
+      // set a timer to re-apply the plugin
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(collage, 200);
+
+    }
+    var resizeTimer = null;
+    $(window).bind('resize', resizewindow());
+	</script>  
+<% end %>
+
+
+<% content_for :nav do %>
+	<ul class="photoNav">
+		<li>
+      <%= link_to "全部", '#', :onclick => "switchImages('all')", :class => 'content_nav_f' %>
+    </li>
+    <% @nodes.each do |node| %>
+      <li>
+        <%=link_to node.name, '#', :onclick => "switchImages(\'#{node.key}\')" %>
+      </li>
+    <% end %>
+	</ul>
+<% end %>
+<%= render 'topics/fullscreen' %>
+<div class="Collage topic_content">
+	<% @nicepictures.each do |pic|%>
+		  <a class="fullscreen_images <%= pic.topic.node.key %>" href='<%= pic.url %>' /><%= image_tag pic.thumbnail, :alt => '123' %></a>
+	<% end %>
+</div>
+		

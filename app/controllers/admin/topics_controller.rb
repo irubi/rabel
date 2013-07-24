@@ -46,9 +46,13 @@ class Admin::TopicsController < Admin::BaseController
     thumbnail = image.scan(/(.*)\./)[0][0]+ 'thumbnail' + image.gsub(/.*\./,".")
     clown = Magick::Image.read(origin_image).first
     cols, rows = clown.columns, clown.rows
-
-    new_rows = rows/(cols/190)
-    clown.crop_resized!(190, new_rows, Magick::NorthGravity)
+    begin
+      new_rows = rows/(cols/190)
+      clown.crop_resized!(190, new_rows, Magick::NorthGravity)
+    rescue
+      
+    end
+    
     clown.write(thumbnail)
   end
 end
