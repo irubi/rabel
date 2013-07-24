@@ -161,7 +161,7 @@
       <li data-filter-class='["<%= pic.topic.node.key %>"]'>
         <%= link_to image_tag(pic.thumbnail), pic.url, :class => 'fullscreen_images' %>
         <p>
-          <%= link_to truncate(pic.topic.title, :length => 10), topic_path(pic.topic) %>
+          <%= link_to truncate(pic.topic.title, :length => 20), topic_path(pic.topic) %>
         </p>
       </li>
     <% end %>
