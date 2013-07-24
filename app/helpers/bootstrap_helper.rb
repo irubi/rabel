@@ -5,6 +5,7 @@ module BootstrapHelper
 
   def nav_item(title, path, options={})
     css_class = (title == @current_nav_item) ? 'active' : ''
+    css_class = options[:class]
     content_tag(:li, link_to(title, path, options), :class => css_class)
   end
 end
